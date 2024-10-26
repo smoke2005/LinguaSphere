@@ -17,8 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Objects;
-
 public class LoginActivity extends AppCompatActivity {
 
     EditText loginUsername, loginPassword;
@@ -39,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!validateUsername() | !validatePassword()) {
-
+                    // Do nothing if validation fails
                 } else {
                     checkUser();
                 }
@@ -53,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     public Boolean validateUsername() {
@@ -67,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public Boolean validatePassword(){
+    public Boolean validatePassword() {
         String val = loginPassword.getText().toString();
         if (val.isEmpty()) {
             loginPassword.setError("Password cannot be empty");
@@ -78,8 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
-    public void checkUser(){
+    public void checkUser() {
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
@@ -89,30 +85,34 @@ public class LoginActivity extends AppCompatActivity {
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if (snapshot.exists()){
-
+                if (snapshot.exists()) {
                     loginUsername.setError(null);
-                    String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
-                    if (passwordFromDB.equals(userPassword)) {
-                        loginUsername.setError(null);
+                    // Iterate through the users in the snapshot
+                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                        String passwordFromDB = userSnapshot.child("password").getValue(String.class);
 
-                        String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
-                        String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
-                        String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
+                        if (passwordFromDB != null && passwordFromDB.equals(userPassword)) {
+                            loginUsername.setError(null);
 
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            // Retrieve other user details from the database
+                            String nameFromDB = userSnapshot.child("name").getValue(String.class);
+                            String emailFromDB = userSnapshot.child("email").getValue(String.class);
+                            String usernameFromDB = userSnapshot.child("username").getValue(String.class);
 
-                        intent.putExtra("name", nameFromDB);
-                        intent.putExtra("email", emailFromDB);
-                        intent.putExtra("username", usernameFromDB);
-                        intent.putExtra("password", passwordFromDB);
+                            // Redirect to LevelPathActivity with the user details
+                            Intent intent = new Intent(LoginActivity.this, LevelPathActivity.class);
+                            intent.putExtra("name", nameFromDB);
+                            intent.putExtra("email", emailFromDB);
+                            intent.putExtra("username", usernameFromDB);
+                            intent.putExtra("password", passwordFromDB);
 
-                        startActivity(intent);
-                    } else {
-                        loginPassword.setError("Invalid Credentials");
-                        loginPassword.requestFocus();
+                            startActivity(intent);
+                            return;  // Exit the loop and method after successful login
+                        } else {
+                            loginPassword.setError("Invalid Credentials");
+                            loginPassword.requestFocus();
+                        }
                     }
                 } else {
                     loginUsername.setError("User does not exist");
@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Handle potential errors here
             }
         });
     }
