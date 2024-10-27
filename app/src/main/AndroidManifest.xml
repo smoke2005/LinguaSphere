@@ -29,6 +29,10 @@
             android:name=".LevelPathActivity" />
         <activity
             android:name=".MenuActivity" />
+        <activity
+            android:name=".McqActivity" />
+        <activity
+            android:name=".FlashcardActivity" />
     </application>
 
 

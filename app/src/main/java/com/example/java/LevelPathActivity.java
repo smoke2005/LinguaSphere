@@ -23,6 +23,7 @@ public class LevelPathActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_levelpath);  // Ensure the correct layout file is used
 
         Intent intent = getIntent();
