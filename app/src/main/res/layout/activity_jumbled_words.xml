@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Jumbled_words">
+
+    <!-- Menu Button at the top-left corner -->
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:backgroundTint="@color/dark_purple"
+        android:textColor="@android:color/white"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp" />
+
+    <!-- Add Score Button next to the Menu Button -->
+    <Button
+        android:id="@+id/addScoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Score"
+        android:backgroundTint="@color/dark_purple"
+        android:textColor="@android:color/white"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp" />
+
+    <!-- Heading: "Translate the Sentence" -->
+    <TextView
+        android:id="@+id/arrangeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Translate the Sentence"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_below="@id/menuButton"
+        android:layout_marginTop="30dp"
+        android:padding="16dp" />
+
+    <!-- Heading: "German Sentence" -->
+    <TextView
+        android:id="@+id/germanSentenceHeadingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="French Sentence"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@id/arrangeTextView"
+        android:layout_marginTop="20dp"
+        android:padding="16dp" />
+
+    <!-- Box for the German Sentence -->
+    <FrameLayout
+        android:id="@+id/germanSentenceBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/germanSentenceHeadingTextView"
+        android:layout_marginTop="10dp"
+        android:padding="16dp"
+        android:background="@drawable/german_sentence_background">
+
+        <!-- Actual German Sentence -->
+        <TextView
+            android:id="@+id/germanSentenceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ich mag Deutsch lernen und genieße die Sprache."
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <!-- English Sentence display -->
+    <TextView
+        android:id="@+id/englishSentenceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="_"
+        android:textColor="@color/dark_purple"
+        android:textSize="17sp"
+        android:layout_below="@id/germanSentenceBox"
+        android:layout_marginTop="20dp"
+        android:padding="16dp" />
+
+    <!-- GridLayout for the word boxes (5 boxes in the first row, 4 in the second) -->
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="5"
+        android:layout_below="@id/englishSentenceTextView"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:useDefaultMargins="true"
+        android:layout_gravity="center">
+    </GridLayout>
+
+    <!-- Button to check translation (aligned to bottom left) -->
+    <Button
+        android:id="@+id/checkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Answer"
+        android:backgroundTint="@color/dark_purple"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Button to go to next question (aligned to bottom right) -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Question"
+        android:backgroundTint="@color/dark_purple"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp" />
+
+</RelativeLayout>
