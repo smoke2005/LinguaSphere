@@ -8,7 +8,6 @@
     android:background="@drawable/quiz"
     tools:context=".McqActivity">
 
-    <!-- FrameLayout for Top Buttons -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -20,7 +19,7 @@
             android:layout_gravity="end"
             android:text="Score:"
 
-            tools:ignore="TouchTargetSizeCheck" /> <!-- Adjust translationY as needed -->
+            tools:ignore="TouchTargetSizeCheck" />
 
         <Button
             android:id="@+id/navigate"
@@ -33,7 +32,7 @@
     </FrameLayout>
 
 
-    <!-- RadioGroup for Answer Options -->
+
     <TextView
         android:id="@+id/question_text"
         android:layout_width="wrap_content"
@@ -48,11 +47,12 @@
         android:textStyle="italic" />
 
     <!-- Buttons for Next and Previous -->
+
     <RadioGroup
         android:id="@+id/answers_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="200dp"
         android:orientation="vertical">
 
         <!-- Option 1 -->
@@ -117,7 +117,7 @@
         <!-- Previous Button -->
         <Button
             android:id="@+id/button_previous"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_weight="1"
@@ -142,7 +142,7 @@
         <!-- Next Button -->
         <Button
             android:id="@+id/button_next"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_weight="1"

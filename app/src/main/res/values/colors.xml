@@ -9,4 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#8692f7</color>
     <color name="grey">#808080</color>
+    <color name="jump_color">#FFFFFF</color>
+    <!-- Define your purple color here -->
+    <color name="dark_purple">#4A0072</color>
+    <color name="lilac">#C8A2C8</color>
+    <color name="holo_blue_light">#C8A2C8</color>
+    <color name="lilac_color">#C8A2C8</color>
+
 </resources>

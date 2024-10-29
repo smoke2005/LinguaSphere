@@ -36,9 +36,9 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view){
                 if (!validateUsername() | !validatePassword()) {
-                    // Do nothing if validation fails
+
                 } else {
                     checkUser();
                 }
@@ -89,19 +89,19 @@ public class LoginActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     loginUsername.setError(null);
 
-                    // Iterate through the users in the snapshot
+
                     for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                         String passwordFromDB = userSnapshot.child("password").getValue(String.class);
 
                         if (passwordFromDB != null && passwordFromDB.equals(userPassword)) {
                             loginUsername.setError(null);
 
-                            // Retrieve other user details from the database
+
                             String nameFromDB = userSnapshot.child("name").getValue(String.class);
                             String emailFromDB = userSnapshot.child("email").getValue(String.class);
                             String usernameFromDB = userSnapshot.child("username").getValue(String.class);
 
-                            // Redirect to LevelPathActivity with the user details
+
                             Intent intent = new Intent(LoginActivity.this, LevelPathActivity.class);
                             intent.putExtra("name", nameFromDB);
                             intent.putExtra("email", emailFromDB);
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("password", passwordFromDB);
 
                             startActivity(intent);
-                            return;  // Exit the loop and method after successful login
+                            return;
                         } else {
                             loginPassword.setError("Invalid Credentials");
                             loginPassword.requestFocus();
@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle potential errors here
+
             }
         });
     }

@@ -25,22 +25,22 @@ public class MenuActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_menu);  // Ensure the correct layout file is used
+        setContentView(R.layout.activity_menu);
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
 
-        // Use the username (for example, display it in a TextView)
-        TextView usernameTextView = findViewById(R.id.usernameTextView); // Make sure to have this TextView in your layout
+
+        TextView usernameTextView = findViewById(R.id.usernameTextView);
         usernameTextView.setText(username);
 
         Button button1 = findViewById(R.id.levelButton1);
 
-        // Set an OnClickListener to the button
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to open SecondActivity
+
                 Intent intent = new Intent(MenuActivity.this, McqActivity.class);
                 intent.putExtra("username", username);
                 startActivity(intent);  // Start the new activity
@@ -49,14 +49,26 @@ public class MenuActivity extends AppCompatActivity{
 
         Button button2 = findViewById(R.id.flash_button);
 
-        // Set an OnClickListener to the button
+
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to open SecondActivity
+
                 Intent intent = new Intent(MenuActivity.this, FlashcardActivity.class);
                 intent.putExtra("username", username);
-                startActivity(intent);  // Start the new activity
+                startActivity(intent);
+            }
+        });
+        Button button3 = findViewById(R.id.levelButton3);
+
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MenuActivity.this, Jumbled_words.class);
+                intent.putExtra("username", username);
+                startActivity(intent);
             }
         });
     }

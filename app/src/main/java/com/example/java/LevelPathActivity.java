@@ -24,25 +24,25 @@ public class LevelPathActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_levelpath);  // Ensure the correct layout file is used
+        setContentView(R.layout.activity_levelpath);
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
 
-        // Use the username (for example, display it in a TextView)
+
         TextView usernameTextView = findViewById(R.id.usernameTextView); // Make sure to have this TextView in your layout
         usernameTextView.setText(username);
 
         Button button = findViewById(R.id.circularButton1);
 
-        // Set an OnClickListener to the button
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to open SecondActivity
+
                 Intent intent = new Intent(LevelPathActivity.this, MenuActivity.class);
                 intent.putExtra("username", username);
-                startActivity(intent);  // Start the new activity
+                startActivity(intent);
             }
         });
     }

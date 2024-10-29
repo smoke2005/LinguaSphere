@@ -12,28 +12,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Java"
         tools:targetApi="31">
+        <activity
+            android:name=".Badge"
+            android:exported="false" />
 
+        <activity
+            android:name=".Jumbled_words"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".SignupActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LevelPathActivity" />
-        <activity
-            android:name=".MenuActivity" />
-        <activity
-            android:name=".McqActivity" />
-        <activity
-            android:name=".FlashcardActivity" />
+        <activity android:name=".LevelPathActivity" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".McqActivity" />
+        <activity android:name=".FlashcardActivity" />
     </application>
-
 
 </manifest>
