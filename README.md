@@ -111,6 +111,6 @@ This project applies the following core Object-Oriented Programming (OOP) concep
 ## DEMO
 
 This is a demo video of the application. Since the file size is large, download the raw video to view it.  
-![Demo Video](demo-language-learning-tool.mp4)
+![Demo Video](LinguaSphere_demo.mp4)
 
 ---
