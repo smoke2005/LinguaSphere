@@ -2,74 +2,54 @@ package com.example.java;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+// Base class for common activity features (if needed)
+abstract class BaseActivity extends AppCompatActivity {
+    protected String username;
 
-public class MenuActivity extends AppCompatActivity{
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    protected void navigateToActivity(Class<?> targetActivity) {
+        Intent intent = new Intent(this, targetActivity);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+}
+
+// MenuActivity class inheriting from BaseActivity
+public class MenuActivity extends BaseActivity {
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_menu);
 
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-
+        // Retrieve username from Intent
+        username = getIntent().getStringExtra("username");
 
         TextView usernameTextView = findViewById(R.id.usernameTextView);
         usernameTextView.setText(username);
 
         Button button1 = findViewById(R.id.levelButton1);
-
-
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MenuActivity.this, McqActivity.class);
-                intent.putExtra("username", username);
-                startActivity(intent);  // Start the new activity
-            }
-        });
+        button1.setOnClickListener(v -> navigateToActivity(McqActivity.class));
 
         Button button2 = findViewById(R.id.flash_button);
+        button2.setOnClickListener(v -> navigateToActivity(FlashcardActivity.class));
 
-
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MenuActivity.this, FlashcardActivity.class);
-                intent.putExtra("username", username);
-                startActivity(intent);
-            }
-        });
         Button button3 = findViewById(R.id.levelButton3);
+        button3.setOnClickListener(v -> navigateToActivity(Jumbled_words.class));
 
-
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MenuActivity.this, Jumbled_words.class);
-                intent.putExtra("username", username);
-                startActivity(intent);
-            }
-        });
+        Button button4 = findViewById(R.id.levelButton2);
+        button4.setOnClickListener(v -> navigateToActivity(QuizActivity.class));
     }
 }

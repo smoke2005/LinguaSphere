@@ -21,19 +21,42 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// Question class to represent a single question
+class Question {
+    private String questionText;
+    private String[] options;
+    private String correctAnswer;
+
+    public Question(String questionText, String option1, String option2, String option3, String option4, String correctAnswer) {
+        this.questionText = questionText;
+        this.options = new String[]{option1, option2, option3, option4};
+        this.correctAnswer = correctAnswer;
+    }
+
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+}
+
 public class McqActivity extends AppCompatActivity {
 
     private TextView questionText;
     private RadioButton answer1, answer2, answer3, answer4;
     private FirebaseFirestore db;
-    private Button nextButton, prevButton, submitButton,scoreButton;
+    private Button nextButton, prevButton, submitButton, scoreButton;
     private RadioGroup answerGroup;
 
-
-    private List<Map<String, Object>> questionList = new ArrayList<>();
+    private List<Question> questionList = new ArrayList<>();
     private int currentQuestionIndex = 0;
     private int score = 0;
-    private String correctAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +64,8 @@ public class McqActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.mcq_activity);
 
-
         initializeUIElements();
-
-
         db = FirebaseFirestore.getInstance();
-
-
         loadQuestionsFromFirestore();
     }
 
@@ -68,10 +86,8 @@ public class McqActivity extends AppCompatActivity {
         prevButton.setOnClickListener(v -> loadPreviousQuestion());
         submitButton.setOnClickListener(v -> checkAnswer());
 
-
         Button buttonNavigate = findViewById(R.id.navigate);
         buttonNavigate.setOnClickListener(v -> {
-
             Intent intent = new Intent(McqActivity.this, MenuActivity.class);
             startActivity(intent);
         });
@@ -84,12 +100,15 @@ public class McqActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         QuerySnapshot querySnapshot = task.getResult();
                         if (querySnapshot != null && !querySnapshot.isEmpty()) {
-
                             for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-
-                                questionList.add(document.getData());
+                                String question = (String) document.getData().get("Question");
+                                String option1 = (String) document.getData().get("Option 1");
+                                String option2 = (String) document.getData().get("Option 2");
+                                String option3 = (String) document.getData().get("Option 3");
+                                String option4 = (String) document.getData().get("Option 4");
+                                String correctAnswer = (String) document.getData().get("Correct Answer");
+                                questionList.add(new Question(question, option1, option2, option3, option4, correctAnswer));
                             }
-
                             displayQuestion(currentQuestionIndex);
                         } else {
                             Toast.makeText(McqActivity.this, "No questions found!", Toast.LENGTH_SHORT).show();
@@ -102,26 +121,15 @@ public class McqActivity extends AppCompatActivity {
 
     private void displayQuestion(int index) {
         if (index >= 0 && index < questionList.size()) {
-            Map<String, Object> questionData = questionList.get(index);
-
-
-            String question = (String) questionData.get("Question");
-            String option1 = (String) questionData.get("Option 1");
-            String option2 = (String) questionData.get("Option 2");
-            String option3 = (String) questionData.get("Option 3");
-            String option4 = (String) questionData.get("Option 4");
-            correctAnswer = (String) questionData.get("Correct Answer");
-
-
-            questionText.setText(question);
-            answer1.setText(option1);
-            answer2.setText(option2);
-            answer3.setText(option3);
-            answer4.setText(option4);
-
+            Question currentQuestion = questionList.get(index);
+            questionText.setText(currentQuestion.getQuestionText());
+            String[] options = currentQuestion.getOptions();
+            answer1.setText(options[0]);
+            answer2.setText(options[1]);
+            answer3.setText(options[2]);
+            answer4.setText(options[3]);
 
             resetAnswerColors();
-
             answerGroup.clearCheck();
         } else {
             Toast.makeText(this, "No more questions!", Toast.LENGTH_SHORT).show();
@@ -144,24 +152,21 @@ public class McqActivity extends AppCompatActivity {
 
         RadioButton selectedRadioButton = findViewById(selectedId);
         String selectedAnswer = selectedRadioButton.getText().toString();
-
+        String correctAnswer = questionList.get(currentQuestionIndex).getCorrectAnswer();
 
         if (selectedAnswer.equals(correctAnswer)) {
             selectedRadioButton.setTextColor(Color.GREEN);
             score++;
             scoreButton.setText(String.format("Score: %d", score));
-
-
         } else {
             selectedRadioButton.setTextColor(Color.RED);  // Incorrect answer
             Toast.makeText(this, "Wrong answer!", Toast.LENGTH_SHORT).show();
         }
 
-
-        highlightCorrectAnswer();
+        highlightCorrectAnswer(correctAnswer);
     }
 
-    private void highlightCorrectAnswer() {
+    private void highlightCorrectAnswer(String correctAnswer) {
         if (answer1.getText().toString().equals(correctAnswer)) {
             answer1.setTextColor(Color.GREEN);
         } else if (answer2.getText().toString().equals(correctAnswer)) {
