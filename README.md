@@ -12,9 +12,8 @@ This project, LinguaSphere, is an interactive language learning tool designed to
 4. [Integration/Execution Sequence](#integrationexecution-sequence)
 5. [Compilers Used](#compilers-used)
 6. [Files Used](#files-used)
-7. [OOP Concepts](#oop-concepts)
-8. [Acknowledgements](#acknowledgements)
-9. [Demo](#demo)
+7. [OOPS Concepts](#oops-concepts)
+8. [Demo](#demo)
 
 ---
 
@@ -94,7 +93,7 @@ The main sequence of operations in the Language Learning Tool application is as 
 
 ---
 
-## OOP CONCEPTS
+## OOPS CONCEPTS
 
 This project applies the following core Object-Oriented Programming (OOP) concepts:
 
@@ -109,6 +108,17 @@ This project applies the following core Object-Oriented Programming (OOP) concep
 ---
 
 ## DEMO
+
+<p align="left">
+  <img src="./OP_SS/OP_SS1.png" width="400" />
+  <img src="./OP_SS/OP_SS2.png" width="400" />
+</p>
+
+<p align="left">
+  <img src="./OP_SS/OP_SS3.png" width="400" />
+  <img src="./OP_SS/OP_SS4.png" width="400" />
+</p>
+
 
 This is a demo video of the application. Since the file size is large, download the raw video to view it.  
 ![Demo Video](LinguaSphere_demo.mp4)
