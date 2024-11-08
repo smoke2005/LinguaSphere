@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">java</string>
+    <string name="level_path_description">Description of the level path image</string>
+
 </resources>

@@ -1,0 +1,24 @@
+<!-- res/drawable/circular_button.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background shadow to give depth -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#B3B3B3" /> <!-- Shadow color (light grey) -->
+            <size android:width="100dp" android:height="100dp" />
+        </shape>
+    </item>
+
+    <!-- Actual button background -->
+    <item android:top="5dp" android:left="5dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/purple_200" /> <!-- Button color -->
+            <corners android:radius="50dp" /> <!-- Corner radius to make it fully circular -->
+            <stroke
+                android:width="2dp"
+                android:color="@android:color/darker_gray" /> <!-- Border to define edges -->
+            <size android:width="100dp" android:height="100dp" />
+        </shape>
+    </item>
+
+</layer-list>

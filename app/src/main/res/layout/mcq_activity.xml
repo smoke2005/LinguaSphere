@@ -1,0 +1,157 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/quiz"
+    tools:context=".McqActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/score_icon"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:text="Score:"
+
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/navigate"
+            android:layout_width="85dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:text="Menu"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </FrameLayout>
+
+
+
+    <TextView
+        android:id="@+id/question_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="150dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Question will appear here"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="italic" />
+
+    <!-- Buttons for Next and Previous -->
+
+    <RadioGroup
+        android:id="@+id/answers_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:orientation="vertical">
+
+        <!-- Option 1 -->
+        <RadioButton
+            android:id="@+id/answer1"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border"
+            android:text="Option 1"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <!-- Option 2 -->
+        <RadioButton
+            android:id="@+id/answer2"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border"
+            android:text="Option 2"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <!-- Option 3 -->
+        <RadioButton
+            android:id="@+id/answer3"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border"
+            android:text="Option 3"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <!-- Option 4 -->
+        <RadioButton
+            android:id="@+id/answer4"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border"
+            android:text="Option 4"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <!-- Previous Button -->
+        <Button
+            android:id="@+id/button_previous"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:minHeight="48dp"
+            android:text="Previous"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/check_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/answer4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+
+            android:backgroundTint="@color/white"
+            android:text="Submit"
+            android:textColor="@color/black" />
+
+        <!-- Next Button -->
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:minHeight="48dp"
+            android:text="Next"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+
+</LinearLayout>

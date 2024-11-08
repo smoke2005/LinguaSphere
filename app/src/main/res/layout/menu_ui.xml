@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuMain">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/menu_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/menu" />
+
+        <!-- Flash Button -->
+        <Button
+            android:id="@+id/flash_btn"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="53dp"
+            android:layout_marginTop="210dp"
+            android:text="1"
+            android:backgroundTint="@color/white"/>
+
+        <!-- MCQ Button -->
+        <Button
+            android:id="@+id/mcq_btn"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="49dp"
+            android:layout_marginTop="300dp"
+            android:text="2"
+            android:backgroundTint="@color/white"/>
+
+        <!-- Translate Button -->
+        <Button
+            android:id="@+id/translate_btn"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="49dp"
+            android:layout_marginTop="400dp"
+            android:text="1"
+            android:backgroundTint="@color/white"/>
+
+        <!-- Fill Button -->
+        <Button
+            android:id="@+id/fill_btn"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="510dp"
+            android:layout_marginEnd="49dp"
+            android:text="1"
+            android:backgroundTint="@color/white" />
+
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

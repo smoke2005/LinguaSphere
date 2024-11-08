@@ -1,0 +1,5 @@
+<!-- res/drawable/ripple_effect.xml -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:colorControlHighlight">
+    <item android:drawable="@drawable/circular_button_background" /> <!-- Reference to your circular button shape -->
+</ripple>
